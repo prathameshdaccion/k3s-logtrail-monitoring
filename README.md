@@ -7,4 +7,8 @@ LogTrail is a plugin for Kibana to view, analyze, search and tail log events fro
 
 Fluentd is used as a DaemonSet to ensure we get a running fluentd daemon on each node of the cluster.
 
-Everything is deployed under infra namespace, you can change that by updating YAML manifests under this folder.
+# Assumptions
+
+You have a K3S environment
+
+You have namespace created with name infra or you can make the changes in yaml files as per your namespace requirement
