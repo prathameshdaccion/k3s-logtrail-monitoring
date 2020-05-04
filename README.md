@@ -93,3 +93,13 @@ $ kubectl create -f fluentd.yaml
 Once fluentd is deployed, check elasticsearch index details using below command. Fluentd should create index with a name "logstash-{date}".
 
 $ curl http://{service-ip}:9200/_cat/indices -u elastic:{password}
+
+#### 5. Create index pattern in kibana for logging
+
+Now our setup is up and running, create an index pattern in kibana. 
+
+###### Go to Management > Kibana > Index Patterns and click on Create index pattern for your index of fluentd. 
+
+You can see an aggregated view of all the logs printed from every pod in logstash-* index. You can filter the logs by any 
+
+attributes attached to the log (for example a Kubernetes label) and navigate over the time.
