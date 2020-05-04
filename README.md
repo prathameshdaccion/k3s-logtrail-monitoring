@@ -48,7 +48,7 @@ Now,Generate a password and store in a k3s secret.
 
 ###### Command
 
-kubectl exec -it $(kubectl get pods -n infra | grep elasticsearch-client | sed -n 1p | awk '{print $1}') -n infra -- bin/elasticsearch-setup-passwords auto -b
+kubectl exec -it $(kubectl get pods -n infra | grep elasticsearch | sed -n 1p | awk '{print $1}') -n infra -- bin/elasticsearch-setup-passwords auto -b
 
 $ kubectl create secret generic elasticsearch-pw-elastic -n infra --from-literal password={elasticsearch-password}
 
