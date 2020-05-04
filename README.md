@@ -21,6 +21,8 @@ The first node of the cluster we’re going to set up is the master which is res
 
 ###### Command
 
+$ cd k3s-logtrail-monitoring-EFK-XPACK/elasticsearch/
+
 $ kubectl apply -f es-master-cm.yaml -f es-master-svc.yaml -f es-master-dep.yaml
 
 The second node of the cluster we’re going to set up is the data node that is responsible for hosting the data and executing the queries (CRUD, search, aggregation).
@@ -69,6 +71,8 @@ Make sure same image is mentioned in your kibana-dep.yaml
 Deploy Kibana using below command.
 
 ###### Command
+
+$ cd k3s-logtrail-monitoring-EFK-XPACK/kibana
 
 $ kubectl apply -f kibana-cm.yaml -f kibana-svc.yaml -f kibana-dep.yaml -f kibana-ingress.yaml
 
