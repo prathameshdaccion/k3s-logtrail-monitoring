@@ -88,4 +88,4 @@ $ kubectl create -f fluentd.yaml
 
 Once fluentd is deployed, check elasticsearch index details using below command. Fluentd should create index with a name "logstash-{date}".
 
-$ curl http://10.43.111.149:9200/_cat/indices -u elastic:{password}
+$ curl http://{service-ip}:9200/_cat/indices -u elastic:{password}
