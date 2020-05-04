@@ -73,3 +73,19 @@ Deploy Kibana using below command.
 $ kubectl apply -f kibana-cm.yaml -f kibana-svc.yaml -f kibana-dep.yaml -f kibana-ingress.yaml
 
 Login with username elastic and the password (previously generated and stored in a secret).
+
+#### 4. Setup Fluentd on your k3s setup
+
+Create fluentd-config from kubernetes.conf and fluent.conf and then deploy fluentd.
+
+###### Command
+
+$ cd k3s-logtrail-monitoring-EFK-XPACK/fluentd/
+
+$ kubectl -n infra create configmap fluentd-config --from-file kubernetes.conf --from-file fluent.conf
+
+$ kubectl create -f fluentd.yaml
+
+Once fluentd is deployed, check elasticsearch index details using below command. Fluentd should create index with a name "logstash-{date}".
+
+$ curl http://10.43.111.149:9200/_cat/indices -u elastic:{password}
