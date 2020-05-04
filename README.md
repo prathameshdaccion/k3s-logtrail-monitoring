@@ -52,16 +52,24 @@ kubectl exec -it $(kubectl get pods -n infra | grep elasticsearch | sed -n 1p | 
 
 $ kubectl create secret generic elasticsearch-pw-elastic -n infra --from-literal password={elasticsearch-password}
 
-#### 2. Setup Kibana on your k3s setup
+#### 2. Create Docker image of Kibana with logtrail plugin
 
-Deploy Kibana and after a couple of minutes, check the logs for 
+Create a docker image of kibana with logtrail plugin installed.
 
-###### Status changed from yellow to green
+###### Command
+
+$ cd k3s-logtrail-monitoring-EFK-XPACK/Docker
+
+$ docker build -t my-logtrail:7.6.2 .
+
+Make sure same image is mentioned in your kibana-dep.yaml
+
+#### 3. Setup Kibana on your k3s setup
+
+Deploy Kibana using below command.
 
 ###### Command
 
 $ kubectl apply -f kibana-cm.yaml -f kibana-svc.yaml -f kibana-dep.yaml -f kibana-ingress.yaml
-
-Once, the logs say “green”, you can access Kibana from your browser by ingress url. ( Update ingress host url as per your requirement )
 
 Login with username elastic and the password (previously generated and stored in a secret).
